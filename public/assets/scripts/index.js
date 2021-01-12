@@ -1,3 +1,3 @@
-import '.main'
-import '.auth'
-import '.calendar'
+import './main'
+import './auth'
+import './calendar'
