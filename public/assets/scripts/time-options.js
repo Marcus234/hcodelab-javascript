@@ -39,16 +39,6 @@ const data = [{
 
 }]
 
-const appendTemplate = (element, tagName, html) => {
-
-    const wrapElement = document.createElement(tagName)
-
-    wrapElement.innerHTML = html
-
-    element.append(wrapElement)
-
-}
-
 const renderTimeOptions = context => {
 
     const targetElement = context.querySelector(".options")
