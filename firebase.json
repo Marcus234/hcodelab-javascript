@@ -6,5 +6,12 @@
       "**/.*",
       "**/node_modules/**"
     ]
-  }
+  },
+  "apiKey": "AIzaSyC1JnVUgNFEcGFP5WL1Sb5YXkaFBKyyuBo",
+  "authDomain": "ferrarijs-88a75.firebaseapp.com",
+  "projectId": "ferrarijs-88a75",
+  "storageBucket": "ferrarijs-88a75.appspot.com",
+  "messagingSenderId": "735227137170",
+  "appId": "1:735227137170:web:5dfc0b89771d39b2c52a4b",
+  "measurementId": "G-7KJ2JDYLZT"
 }

@@ -1,6 +1,11 @@
+import firebase from './firebase.app';
+import { getFormValues, hideAlertError, showAlertError } from './utils';
+
 const authPage = document.querySelector('main#auth');
 
 if(authPage){
+
+    const auth = firebase.app();
 
     const hideAuthForms = () => {
 
@@ -45,7 +50,8 @@ if(authPage){
                 break
 
             default :
-                showAuthForm('auth-email')
+                //showAuthForm('auth-email')
+                showAuthForm('login')
 
         }
 
@@ -77,6 +83,56 @@ if(authPage){
         sessionStorage.setItem('email', formAuthEmail.email.value)
         location.hash = '#login'
         btnSubmit.disabled = false
+
+    })
+    
+    const formAuthRegister = document.querySelector("#register")
+
+    formAuthRegister.addEventListener("submit", e => {
+
+        e.preventDefault()
+
+        hideAlertError(formAuthRegister)
+
+        //console.log(getFormValues(formAuthRegister))
+
+        const values = getFormValues(formAuthRegister)
+
+        auth
+            .createUserWithEmailAndPassword(values.email, values.password)
+            .then(response => {
+
+                const { user } = response
+
+                user.updateProfile({
+
+                    displayName: values.name
+
+                })
+
+                window.location.href = "/"
+
+            })
+            .catch(showAlertError(formAuthRegister))
+
+    })
+
+    const formAuthLogin = document.querySelector("#login")
+
+    formAuthLogin.addEventListener("submit", e => {
+
+        e.preventDefault()
+
+        hideAlertError(formAuthLogin)
+
+        //console.log(getFormValues(formAuthRegister))
+
+        const values = getFormValues(formAuthLogin)
+
+        auth
+            .signInWithEmailAndPassword(values.email, values.password)
+            .then(response => window.location.href = "/")
+            .catch(showAlertError(formAuthLogin))
 
     })
 
