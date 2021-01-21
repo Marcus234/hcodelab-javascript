@@ -5,7 +5,7 @@ const btnOpen = document.getElementById('btn-open');
 const closeMenu = document.querySelectorAll('[data-close ="menu"]');
 const menuLinks = document.querySelectorAll('.menu a');
 const menu = document.querySelector('#header .menu');
-const btnLogged = menu.querySelector("#header .menu .footer button")
+const btnLogged = menu.querySelector("#header .menu .footer button");
 const auth = firebase.auth()
 
 if(btnLogged) {

@@ -115,3 +115,14 @@ export function showAlertError(form, error) {
     }
 
 }
+
+export function formatCurrency(value) {
+
+    return parseFloat(value).toLocaleString('pt-br', {
+
+        style: 'currency',
+        currency: 'BRL'
+
+    })
+
+}
