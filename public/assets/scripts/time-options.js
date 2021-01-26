@@ -1,7 +1,7 @@
 import { format, parse } from "date-fns";
 import { ptBR } from 'date-fns/locale';
 import firebase from './firebase-app';
-import { appendTemplate, getFormValues, getQueryString, setFormValues } from "./utils";
+import { appendTemplate, getFormValues, getQueryString, onSnapshotError, setFormValues } from "./utils";
 
 /*const data = [{
     id: 1,
@@ -45,8 +45,6 @@ const renderTimeOptions = (context, timeOptions) => {
 
     })
 
-    
-
 }
 
 const validateSubmitForm = context => {
@@ -89,21 +87,26 @@ const validateSubmitForm = context => {
 
 document.querySelectorAll("#time-options").forEach(page => {
 
+    const auth = firebase.auth();
     const db = firebase.firestore();
 
-    db.collection('time-options').onSnapshot(snapshot => {
+    auth.onAuthStateChanged(user => {
 
-        const timeOptions = [];
+        db.collection('time-options').onSnapshot(snapshot => {
 
-        snapshot.forEach(item => {
-
-            timeOptions.push(item.data());
-
-        })
-
-        renderTimeOptions(page, timeOptions);
-
-        validateSubmitForm(page)
+            const timeOptions = [];
+    
+            snapshot.forEach(item => {
+    
+                timeOptions.push(item.data());
+    
+            })
+    
+            renderTimeOptions(page, timeOptions);
+    
+            validateSubmitForm(page)
+    
+        }, onSnapshotError);
 
     })
 
