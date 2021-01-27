@@ -1,5 +1,4 @@
 export function appendTemplate(element, tagName, html) {
-
     const wrapElement = document.createElement(tagName)
 
     wrapElement.innerHTML = html
@@ -7,7 +6,6 @@ export function appendTemplate(element, tagName, html) {
     element.append(wrapElement)
 
     return wrapElement
-
 }
 
 export function getQueryString() {
@@ -26,7 +24,7 @@ export function getQueryString() {
 
     }
 
-    return params
+    return queryString
 
 }
 
@@ -40,14 +38,11 @@ export function setFormValues(form, values) {
 
             case "select":
                 field.querySelector(`option[value=${values[key]}]`).selected = true
-                break
-
+                break  
             case "checkbox":
-
             case "radio":
                 form.querySelector(`[name=${key}][value=${values[key]}]`).checked = true
                 break
-
             default:
                 field.value = values[key]
 
@@ -68,22 +63,15 @@ export function getFormValues(form) {
             case "select":
                 values[field.name] = field.querySelector("option:selected")?.value
                 break
-
             case "radio":
                 values[field.name] = form.querySelector(`[name=${field.name}]:checked`)?.value
                 break
-
             case "checkbox":
                 values[field.name] = []
-
                 form.querySelectorAll(`[name=${field.name}]:checked`).forEach(checkbox => {
-
                     values[field.name].push(checkbox.value)
-                    
                 })
-
                 break
-
             default:
                 values[field.name] = field.value
 

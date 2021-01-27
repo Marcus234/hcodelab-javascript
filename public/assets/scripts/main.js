@@ -1,44 +1,24 @@
-const body = document.querySelector('body');
-const btnOpen = document.getElementById('btn-open');
-const closeMenu = document.querySelectorAll('[data-close ="menu"]');
+const body = document.querySelector('body')
+const btnOpen = document.getElementById('btn-open')
+const closeMenu = document.querySelectorAll('[data-close ="menu"]')
 const menuLinks = document.querySelectorAll('.menu a');
 
 if(btnOpen){
-
     btnOpen.addEventListener('click', e => {
-
-        body.classList.add('open-menu')// abre o menu
-                        //remove() fechar o menu
-                        //toggle() abrir e fechar menu
-
+        body.classList.add('open-menu')
     })
-
 }
-
 if(closeMenu){
-
-    closeMenu.forEach(el => {
-
+    closeMenu.forEach(el => {        
         el.addEventListener('click', e => {
-    
             body.classList.remove('open-menu')
-    
         })
-
     })
-
 }
-
 if(menuLinks){
-
-    menuLinks.forEach(el => {
-
+    menuLinks.forEach(el => {        
         el.addEventListener('click', e => {
-    
             body.classList.remove('open-menu')
-    
         })
-
     })
-
 }

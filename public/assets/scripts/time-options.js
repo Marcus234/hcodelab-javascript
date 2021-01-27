@@ -1,42 +1,28 @@
 import { format, parse } from "date-fns"
 import { ptBR } from 'date-fns/locale'
-import { appendTemplate, getQueryString, setFormValues } from "./utils"
+import { appendTemplate, getFormValues, getQueryString, setFormValues } from "./utils"
 
 const data = [{
-
     id: 1,
     value: '9:00'
-
 }, {
-
     id: 2,
     value: '10:00'
-
 }, {
-
     id: 3,
     value: '11:00'
-
 }, {
-
     id: 4,
     value: '12:00'
-
 }, {
-
     id: 5,
     value: '13:00'
-
 }, {
-
     id: 6,
     value: '14:00'
-
 }, {
-
     id: 7,
     value: '15:00'
-
 }]
 
 const renderTimeOptions = context => {
@@ -58,6 +44,8 @@ const renderTimeOptions = context => {
 
     })
 
+    
+
 }
 
 const validateSubmitForm = context => {
@@ -66,23 +54,22 @@ const validateSubmitForm = context => {
 
     const checkValue = () => {
 
-        if (!context.querySelector("[name=option]:checked")) {
-
-            button.disabled = true
-
-        } else {
-
+        if (context.querySelector("[name=option]:checked")) {
             button.disabled = false
-
+        } else {
+            button.disabled = true
         }
 
     }
+
+    window.addEventListener('load', e => checkValue())
 
     context.querySelectorAll("[name=option]").forEach(input => {
 
         input.addEventListener("change", e => {
 
-            checkValue()
+            //button.disabled = !context.querySelector("[name=option]:checked")
+            checkValue()            
 
         })
 
@@ -90,17 +77,15 @@ const validateSubmitForm = context => {
 
     context.querySelector("form").addEventListener("submit", e => {
 
+        e.preventDefault()
+        console.log(getFormValues(e.target))
+
         if (!context.querySelector("[name=option]:checked")) {
-
             button.disabled = true
-
             e.preventDefault()
-
         }
 
     })
-
-    window.addEventListener('load', () => checkValue())
 
 }
 
@@ -115,7 +100,7 @@ document.querySelectorAll("#time-options").forEach(page => {
     const form = page.querySelector("form")
     const scheduleAt = parse(params.schedule_at, "yyyy-MM-dd", new Date())
 
-    setFormValues(params)
+    setFormValues(form, params)
 
     title.innerHTML = format(scheduleAt, "EEEE, d 'de' MMMM 'de' yyyy", { locale: ptBR})
 

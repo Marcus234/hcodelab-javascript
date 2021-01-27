@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="1"
+            failures="1"
+            tests="2">
+
+  <testsuite name="register"
+    errors="1" failures="1" hostname="" id="" package="register" skipped="1"
+    tests="2" time="27.45" timestamp="">
+  
+    <testcase name="Passo 1: Acessar a página de autenticação" classname="register" time="13.02" assertions="3">
+
+    
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="Passo 2: Tentar fazer cadastro" classname="register" time="14.43" assertions="2">
+
+      <failure message="Testing if element &lt;#auth-email &gt; div.actions &gt; a&gt; is visible in 5000ms - expected &#34;is visible&#34; but got: &#34;element could not be located&#34; (5399ms)">    at Object.Passo 2: Tentar fazer cadastro (C:\Users\Marcus Ribeiro\Desktop\JS Hcodelab\tests\register.js:20:21)
+    at processTicksAndRejections (internal/process/task_queues.js:97:5)</failure>
+
+    
+    <error message="Error while running &#34;visible&#34; command: Testing if element [0;33m&lt;#auth-email &gt; div.actions &gt; a&gt;[0m is visible in 5000ms - expected [0;32m&#34;is visible&#34;[0m but got: [0;31m&#34;element could not be located&#34;[0m [0;90m(5399ms)[0m" type="error"><![CDATA[
+        at Object.Passo 2: Tentar fazer cadastro (C:\Users\Marcus Ribeiro\Desktop\JS Hcodelab\tests\register.js:20:21)
+    at processTicksAndRejections (internal/process/task_queues.js:97:5)
+    ]]></error>
+    
+    </testcase>
+  
+
+  
+    <system-err>
+        NoSuchElementError: An error occurred while running .isVisible() command on &lt;#auth-email &gt; div.actions &gt; a&gt;: 
+   {&#34;sessionId&#34;:&#34;9c4fd231e4c12907fa8dac22b844eb5e&#34;,&#34;status&#34;:0,&#34;value&#34;:[]}
+       at processTicksAndRejections (internal/process/task_queues.js:97:5)
+    </system-err>
+  
+
+    
+
+  
+    
+    <testcase
+      name="Passo 3: Verificar se autenticou após o cadastro" classname="register">
+      <skipped />
+    </testcase>
+    
+  
+  </testsuite>
+</testsuites>
